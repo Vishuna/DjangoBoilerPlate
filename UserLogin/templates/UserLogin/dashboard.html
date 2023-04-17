@@ -1,0 +1,97 @@
+{% extends 'menu.html' %}
+{% load static %}
+
+
+{% block content %}
+
+<div class="md-card">
+  <div class="md-card-content">
+<div class="container-fluid">
+  <div class="row" class="user_count_input" style="background-color: #d2d2d2; padding: 20px;">
+    <form id="my_form" class="form-control form-inline" method="POST" action="{% url 'dashboard' %}">
+      {% csrf_token %}
+      <div class="form-row" >
+        <div class="input-group m-2">
+          <label for="add user" style="padding: 5px; font-size:20px; color: #1976D2;">Number of Users:</label>
+          <input type="text" id="user_count" name="user_count" value=""><br/>
+          <input type="submit" class="btn btn-primary" style="margin-left: 10px;" >
+            <!-- <a href="#"  class="btn btn-primary" style="margin-left: 10px;" onclick="addFields()">Add</a> -->
+        </div>
+      </div>
+  </form>
+  </div>
+  {{user_count}}
+ 
+
+  <div class="row form-control" >
+    <table class="text-center">
+      <th style="width:150px;">
+       First Name
+      </th>
+      <th style="width:150px;">
+        Last Name
+      </th>
+      <th style="width:150px;">
+        Mobile Number
+       </th>
+       <th style="width:150px;">
+         Email Id
+       </th>
+       <th style="width:150px;">
+        Password
+       </th>
+       <th style="width:150px;">
+         Confirm Password
+       </th>
+    </table>
+  </div>
+  
+  
+<form method="POST" action="{% url 'user_registration' %}">
+  {% csrf_token %}
+  <script>
+</script>
+{% for user_count in range %}
+  <div class="row">
+    <div class="col-sm">
+    <div id="container1" >
+      <input type="text" name="first_name">
+    </div>
+  </div>
+  <div class="col-sm">
+    <div id="container2">
+      <input type="text" name="last_name">
+    </div>
+  </div>
+  <div class="col-sm">
+    <div id="container3" >
+      <input type="text" name="mobile_number">
+    </div>
+  </div>
+  <div class="col-sm">
+    <div id="container4">
+      <input type="text" name="email_id">
+    </div>
+  </div>
+  <div class="col-sm">
+    <div id="container5" >
+      <input type="text" name="password">
+    </div>
+  </div>
+  <div class="col-sm">
+    <div id="container6">
+      <input type="text" name="confirm_password">
+    </div>
+  </div>
+</div>
+{% endfor %}
+<input type="submit"  class="btn btn-primary">
+  
+</form>
+
+
+
+</div>
+  </div>
+  </div>
+{% endblock %}
